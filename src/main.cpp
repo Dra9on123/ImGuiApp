@@ -22,7 +22,7 @@ int main() {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        ImGui::Begin("Hello, world!");
+        ImGui::Begin("Hello, World!!");
         ImGui::Text("This is some text.");
         ImGui::End();
 
