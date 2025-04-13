@@ -4,15 +4,15 @@ project(ImGuiApp)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(SDL_TEST OFF CACHE BOOL "" FORCE)
-set(SDL_SHARED OFF CACHE BOOL "" FORCE)
 set(SDL_STATIC ON CACHE BOOL "" FORCE)
+set(SDL_SHARED OFF CACHE BOOL "" FORCE)
+set(SDL_TEST OFF CACHE BOOL "" FORCE)
 
-add_subdirectory(thirdparty/sdl EXCLUDE_FROM_ALL)
+add_subdirectory(thirdparty/sdl2 EXCLUDE_FROM_ALL)
 
 set(SDL_INCLUDE_DIRS
-    ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/sdl/include
-    ${CMAKE_BINARY_DIR}/thirdparty/sdl/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/sdl2/include
+    ${CMAKE_BINARY_DIR}/thirdparty/sdl2/include
 )
 
 file(GLOB IMGUI_SOURCES
@@ -37,7 +37,6 @@ add_executable(ImGuiApp
     src/main.cpp
 )
 
-# Required to avoid SDL redefining `main`
 target_compile_definitions(ImGuiApp PRIVATE SDL_MAIN_HANDLED)
 
 target_include_directories(ImGuiApp PRIVATE ${SDL_INCLUDE_DIRS})

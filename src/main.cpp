@@ -7,6 +7,7 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 
+#include <iostream>
 #include <stdio.h>
 
 int main()
@@ -37,9 +38,8 @@ int main()
 
     SDL_GLContext gl_context = SDL_GL_CreateContext(window);
     SDL_GL_MakeCurrent(window, gl_context);
-    SDL_GL_SetSwapInterval(1); // Enable vsync
+    SDL_GL_SetSwapInterval(1);
 
-    // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
@@ -56,7 +56,6 @@ int main()
         style.Colors[ImGuiCol_WindowBg].w = 1.0f;
     }
 
-    // Initialize ImGui SDL/OpenGL backends
     ImGui_ImplSDL2_InitForOpenGL(window, gl_context);
     ImGui_ImplOpenGL3_Init(glsl_version);
 
@@ -75,7 +74,7 @@ int main()
         }
 
         ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplSDL2_NewFrame(window);
+        ImGui_ImplSDL2_NewFrame();
         ImGui::NewFrame();
 
         ImGuiID dockspace_id = ImGui::GetID("MainDockSpace");
@@ -110,7 +109,6 @@ int main()
         SDL_GL_SwapWindow(window);
     }
 
-    // Cleanup
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
