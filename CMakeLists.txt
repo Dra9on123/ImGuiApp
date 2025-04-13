@@ -29,7 +29,6 @@ add_executable(ImGuiApp
 )
 
 
-
 target_link_libraries(ImGuiApp PRIVATE imgui glfw)
 
 find_package(OpenGL REQUIRED)
